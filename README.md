@@ -1,1 +1,1 @@
-Minesweeper
+Minesweeper HTML/CSS layout
