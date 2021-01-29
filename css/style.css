@@ -14,7 +14,9 @@
     text-align: center;
     justify-content: center;
 }
-
+.pause{
+    visibility: hidden;
+}
 .play{
     border: 4px solid #664e62;
     margin-right: 20px;
