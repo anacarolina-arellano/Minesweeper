@@ -82,12 +82,12 @@
     margin-top: 30px;
     display: flex;
 }
+.game-screen{
+    margin-left: auto;
+    margin-right: auto;
+}
 .while-playing-grid{
     margin: auto;
-}
-.game-grid{
-    margin-left: 5%;
-    margin-right: auto;
 }
 .time{
     background-image: url(timer.png);
@@ -135,11 +135,11 @@ a{
 }
 td{
     border-color: grey;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 1px solid white;
+    background-color: black;
     margin: 1px;
-    background-color: slategray;
     text-align: center;
     font-weight: bold;
     color: white;
