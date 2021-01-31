@@ -108,11 +108,12 @@ span{
     padding-bottom: 2em;
 }
 .game-screen{
-    margin-left: auto;
+    margin-left: 25%;
     margin-right: auto;
 }
 .while-playing-grid{
-    margin: auto;
+    margin-right: auto;
+    margin-left: 25%;
 }
 .time{
     background-image: url(timer.png);

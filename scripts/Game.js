@@ -43,6 +43,7 @@ export default class Game{
        }
        markup += "</table>";
 
-       document.querySelector("#game-screen").innerHTML = markup;
+       let screen = document.getElementById('game-screen');
+       screen.querySelector(".game-grid").innerHTML = markup;
     }
 }
