@@ -16,3 +16,4 @@ Once that the file has been unzipped:
 - Go to the folder (the path depends of its location on your machine)
 - Write the command "npm install" in order to install the dependencies
 - Write the command "live-server" and the project will run in your browser
+- The pdf of the layout is in the carpet named "layout pdf"
