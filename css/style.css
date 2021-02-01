@@ -101,12 +101,6 @@ span{
     width: 60%;
     padding-bottom: 2em;
 }
-.win-screen{
-    margin:auto;
-    border: 6px solid #664e62;
-    width: 60%;
-    padding-bottom: 2em;
-}
 .game-screen{
     position: relative;
     margin-left: 20%;
@@ -143,6 +137,10 @@ span{
     padding-bottom: 5em;
 }
 .win-screen{
+    margin:auto;
+    border: 6px solid #664e62;
+    width: 60%;
+    padding-bottom: 2em;
     padding-top: 2em;
     text-align: center;
     font-size: 18px;
@@ -150,6 +148,37 @@ span{
 .win-screen span{
     position: relative;
     font-size: 30px;
+}
+.instructions-screen{
+    margin:auto;
+    border: 6px solid #664e62;
+    width: 60%;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    text-align: center;
+    font-size: 18px;
+}
+.instructions-screen span{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+    font-size: 30px;
+    font-weight: bold;
+}
+.instructions-screen img{
+    height: 50%; 
+    margin: auto; 
+    display: block;
+    padding-bottom: 1em;
+}
+.my-text{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    text-align: justify;
+    font-size: 20px;
+    line-height: 1.5em;
 }
 li{
     border: 4px solid #664e62;
