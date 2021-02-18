@@ -4,4 +4,5 @@
 import Game from './Game.js';
 //Main appplication
 let game = new Game();
+const size = Game.DEFAULT_SIZE;
 game.run();

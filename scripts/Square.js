@@ -3,13 +3,12 @@
 
 export default class Square{
     constructor(){
-        this.hasMine = flase;
-        //this.location
+        this._hasMine = false;
         this.adjacentMines = 0;
         this.mine = null; // new Mine()
     }
 
-    hasMine(){
-        return this.hasMine;
+    get hasMine(){
+        return this._hasMine;
     }
 }
