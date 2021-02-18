@@ -1,13 +1,33 @@
+// Copyright (c) 2021 Ana Carolina Arellano
 'use strict';
 
+//import Minefield from "./Minefield"
+
+const DEFAULT_SIZE = 12;
+const MINE_COUNT = 10;
 export default class Game{
 
-    constructor(){
+    constructor(size = DEFAULT_SIZE){
+        //Create a game
         this.board = {
-            size : 15
+            size : size,
         };
+       // this.minefield = new Minefield(size, MINE_COUNT);
         this.gameOver = false;
+        
+        this.generateBoard();
+
+        this.message = "Welcome to Minesweeper";
+        document.querySelector("#test-button").
+            addEventListener('click', event => this.eventHandler(event));
+
+
     }
+
+    eventHandler( event ){
+        document.querySelector("#demo").innerHTML = this.message;
+    }
+
     run(){
         while(!this.gameOver){
             this.update();
@@ -37,7 +57,8 @@ export default class Game{
        for(let row = 0; row < this.board.size; row++){
            markup += "<tr>";
            for(let col = 0; col < this.board.size; col++){
-               markup += "<td></td>";
+           // const id = 'square-${row}-${col}';   
+            markup += "<td><div></div></td>";
            }
            markup += "</tr>";
        }

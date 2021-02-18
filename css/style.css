@@ -227,3 +227,10 @@ footer{
     margin-top: 20px;
     text-align: center;
 }
+.button{
+    background-color: grey;
+    border-left: 3px solid lightgrey;
+    border-top: 3px solid lightgrey;
+    border-right: 4px solid #555;
+    border-bottom: 4px solid #555;
+}

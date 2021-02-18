@@ -1,4 +1,4 @@
-//Copyright (c) 2021,, Ana Carolina Arellano
+// Copyright (c) 2021, Ana Carolina Arellano
 'use strict';
 
 import Game from './Game.js';
