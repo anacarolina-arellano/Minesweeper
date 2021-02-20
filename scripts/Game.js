@@ -102,41 +102,33 @@ export default class Game{
             this.flag($selectedEl);
         })
     }
-
-    // Consulted StackOverflow to make this function
-    // Reference at the end of index.html
-    startTimer(){
-        var myDay = new Date();
-        var minutes = myDay.getMinutes();
-        var seconds = myDay.getSeconds();
-        
-        if(seconds < 10){
-            seconds = "0" + seconds;
-        }else{
-            seconds += seconds;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }else{
-            minutes+= minutes;
-        }
-
-        $(".clock").html(minutes+ " : " + seconds);
-     //   setTimeout(this.startTimer(), 500);            
-    }
-
+      
     //Consulted page: https://jsfiddle.net/Mottie/sML8b/
     run(){
-        setInterval(this.startTimer(), 1000);
-        //let secondCount = 0;
-        //const $timerEl = $(".clock");
-        //let timer = window.setInterval( () => {
-          //  $timerEl.html(secondCount);
-            //secondCount++;
-            //if (this.gameOver){
-              //  window.clearInterval(timer);
-           // }
-        //}, 1000);
+        let secondCount = 0;
+        let minuteCount = 0;
+        const $timerEl = $(".clock");
+        let timer = window.setInterval( () => {
+            if(secondCount < 10){
+                secondCount = "0" + secondCount;
+            }
+            else{
+                secondCount = "" + secondCount;
+            }
+    
+            $timerEl.html(minuteCount+ " : " + secondCount);
+            if(secondCount + 1 == 60){
+                minuteCount++;
+                secondCount = 0;
+                
+            } 
+            else{
+                secondCount++;
+            }
+            if(this.gameOver){
+                window.clearInterval(timer);
+            }
+        }, 1000);
     }
 
     generateBoard(){
