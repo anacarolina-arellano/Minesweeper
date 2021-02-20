@@ -3,6 +3,7 @@
 
 import Game from './Game.js';
 //Main appplication
-let game = new Game();
-const size = Game.DEFAULT_SIZE;
+let game = new Game();     
+Game. DEFAULT_SIZE = 12;
+Game. DEFAULT_MINE = 20;
 game.run();

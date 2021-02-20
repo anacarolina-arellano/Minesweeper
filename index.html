@@ -6,12 +6,11 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type= "text/javascript" src="scripts/libs/buzz.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <!-- Body of web page -->
     <body>
-        <div id = "test-button" class="button"> Press Me</div>
-        <div id = "demo">Test area</div>
         <!-- Title and data of assignment -->
         <div id = "my-header" class = "my-header">
             <span>Assignment #2 - Intro to Programming in HTML5</span>
@@ -29,187 +28,109 @@
             <div class="play-menu">
                 <div class = "dif">
                     Difficulty </br>⟶
+                    <div class = "my-options hidden">
+                        <div class = "my-button easy">
+                            Easy </br> ▬▬▬▬▬▬
+                        </div>
+                        <div class = "my-button medium">
+                            Medium </br> ▬▬▬▬▬▬
+                        </div>
+                        <div class = "my-button hard">
+                            Hard </br> ▬▬▬▬▬▬
+                        </div>
                     </div>
-                <div class = "play">
+                </div>
+                <div id="play" class = "play">
                 ► </br> Play
                 </div>
-                <div class = "inst">
-                Instructions </br> ▬▬▬▬▬▬▬▬▬▬
-                </div>
             </div>
-
-            <!-- Footer -->
-            <footer id = "end" class = "end">
-                Built with love. <br>
-                Copyright: Ana Carolina Arellano, 2021           
-            </footer>
-            </br></br>
         </section>
         <!-- End of Splash Sreen -->
 
         <!-- Start of Game screen -->
-        <div id = "my-header" class = "my-header">
-            <span>Assignment #2 - Intro to Programming in HTML5</span>
-            <div class = "title">
-                <h1>Minesweeper  《 Kirby Version  》</h1>
-            </div>
-        </div>
-        <!-- End of title -->
-        <!--Menu-->            
-        <section class = "play-menu">
-            <div class = "pause">
-                ▌▌ </br> Pause
-            </div>
-            <div class = "inst">
-                Instructions </br> ▬▬▬▬▬▬▬▬▬▬
-            </div>
-        </section>
-        <!-- End of menu -->
-        <section class="middle">
-            <!-- Sidebar -->
-            <ul class="nav">
-                <li>00:00 ⌛</li>
-                <li>15 Flags 🚩</li>
-            </ul>
-            <!-- Grid -->
-            <section id="game-screen" class= "game-screen">
-                <div id="game-grid" class="game-grid">
-                    <!-- Generated with script-->
+        <section id = "run-game" class = "run-game">
+            <!--Menu-->            
+            <section class = "play-menu">
+                <div id = "pause" class = "my-button on-pause">
+                    ▌▌ </br> Pause
                 </div>
+                <div class = "my-button inst">
+                    Instructions </br> ▬▬▬▬▬▬▬▬▬▬
+                </div>
+            </section>
+            <!-- End of menu -->
+            <section class="middle">
+                <!-- Sidebar -->
+                <ul class="nav">
+                    <li class="clock">00:00</li>
+                    <li>15 Flags 🚩</li>
+                </ul>
+                <!-- Grid -->
+                <section id="game-screen" class= "game-screen">
+                    <div id="game-grid" class="game-grid">
+                        <!-- Generated with script-->
+                    </div>
+                </section>
             </section>
         </section>
         <!-- Footer -->
-        <footer id = "end" class = "end">
-            Built with love. <br>
-            Copyright: Ana Carolina Arellano, 2021           
-        </footer>
-        <!-- End of Footer-->
         <!-- End of Start of Game -->
 
         <!-- Paused Game -->
-        <div id = "my-header" class = "my-header">
-            <span>Assignment #2 - Intro to Programming in HTML5</span>
-            <div class = "title">
-                <h1>Minesweeper  《 Kirby Version  》</h1>
-            </div>
-        </div>
-        <!-- End of title -->
-        <section class="paused">
+        <section id = "paused" class="paused hidden">
             <section class = "paused-box">
                 <img src="images/kirby2.gif">
                 <section class = "play-menu">
-                    <div class = "pause">
+                    <div id = "resume" class = "my-button resume">
                         ►  </br> Resume
                     </div>
-                    <div class = "inst">
-                        Quit </br> ▬▬▬▬▬▬▬▬▬▬
+                    <div class = "my-button inst">
+                        Instructions </br> ▬▬▬▬▬▬▬▬▬▬
                     </div>
                 </section>
             </section>
         </section>
-        <!-- Footer -->
-        <footer id = "end" class = "end">
-            Built with love. <br>
-            Copyright: Ana Carolina Arellano, 2021           
-        </footer>
         <!-- End of Paused Game -->
-        
-        <!-- While Playing Screen -->
-        <!-- Title and data of assignment -->
-        <div id = "my-header" class = "my-header">
-            <span>Assignment #2 - Intro to Programming in HTML5</span>
-            <div class = "title">
-                <h1>Minesweeper  《 Kirby Version  》</h1>
-            </div>
-        </div>
-        <!-- End of title -->
-        <!--Menu-->            
-        <section class = "play-menu">
-            <div class = "pause">
-                ▌▌ </br> Pause
-            </div>
-            <div class = "inst">
-                Instructions </br> ▬▬▬▬▬▬▬▬▬▬
-            </div>
-        </section>
-        <section class="middle">
-            <!-- Sidebar -->
-            <ul class="nav">
-                <li>00:00 ⌛</li>
-                <li>15 Flags 🚩</div></li>
-            </ul>
-
-            <!-- Game -->
-            <section class= "while-playing-grid">
-                <!-- This table is a placeholder just to show how I want it to look life while playing -->
-                <table>
-                    <tr><td><img src='./images/flag.png' style="width: 2em; height: 2em;"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img src='./images/flag.png' style="width: 2em; height: 2em;"></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img src='./images/kirby1.png' style="width: 2em; height: 2em;"></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td><img src='./images/kirby1.png' style="width: 2em; height: 2em;"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td>2</td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td><img src='./images/flag.png' style="width: 2em; height: 2em;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td>1</td><td><img src='./images/kirby1.png' style="width: 2em; height: 2em;"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                </table>
-            </section>
-        </section>
-        <!-- Footer -->
-        <footer id = "end" class = "end">
-            Built with love. <br>
-            Copyright: Ana Carolina Arellano, 2021           
-        </footer>
-        <!-- End of Footer-->
-        <!-- End of While Playing Screen-->
 
         <!-- Win Screen -->
-        <!-- Title and data of assignment -->
-        <div id = "my-header" class = "my-header">
-            <span>Assignment #2 - Intro to Programming in HTML5</span>
-            <div class = "title">
-                <h1>Minesweeper  《 Kirby Version  》</h1>
-            </div>
-        </div>
-        <!-- End of title -->
         <!-- Win box -->
-        <section id="rewards-screen">
-            <div class="win-screen">
+        <section id="end-screen" class="win-screen hidden">
+            <div class="end-screen">
                 <span></br> Congratulations! </br> You Won!</span>
                 <img src="images/kirby3.gif">
                 <section class = "play-menu">
-                    <div class = "pause">
+                    <div class = "my-button play-again">
                         ►  </br> Play Again
                     </div>
-                    <div class = "inst">
+                    <div class = "my-button quit">
                         Quit </br> ▬▬▬▬▬▬▬▬▬
                     </div>
                 </section>
-            </div>            
-            <!-- Footer -->
-            <footer id = "end" class = "end">
-                Built with love. <br>
-                Copyright: Ana Carolina Arellano, 2021           
-            </footer>
-            <!-- End of Footer-->
+            </div>
         </section>
         <!-- End of Win Screen -->
 
-        <!-- Instructions Screen -->
-        <!-- Title and data of assignment -->
-        <div id = "my-header" class = "my-header">
-            <span>Assignment #2 - Intro to Programming in HTML5</span>
-            <div class = "title">
-                <h1>Minesweeper  《 Kirby Version  》</h1>
+        <!-- Lost Screen -->
+        <!-- Lost box -->
+        <section id="end-screen" class="lost-screen hidden">
+            <div class="end-screen">
+                <span></br> Ohh, too bad! </br> You lost, try again!</span>
+                <img src="images/ghost.gif">
+                <section class = "play-menu">
+                    <div class = "my-button play-again">
+                        ►  </br> Play Again
+                    </div>
+                    <div class = "my-button quit">
+                        Quit </br> ▬▬▬▬▬▬▬▬▬
+                    </div>
+                </section>
             </div>
-        </div>
-        <!-- End of title -->
-        <!-- Win box -->
-        <section id="instructions-screen">
-            <div class="instructions-screen">
+        </section>
+        <!-- End of Lost Screen -->
+
+        <!-- Instructions Screen -->
+        <section id="instructions-screen" class="hidden instructions-screen">
+            <div class="instructions">
                 <span>Instructions</span>
                 <div class= "my-text">
                     <!-- The instructions were retrieved from the site http://www.freeminesweeper.org/help/minehelpinstructions.html -->
@@ -224,26 +145,27 @@
                 </div>
                 <img src="images/kirbyI.gif">
                 <section class = "play-menu">
-                    <div class = "pause">
+                    <div class = "my-button back">
                         Go  </br> Back
                     </div>
-                    <div class = "inst">
+                    <div class = "my-button quit">
                         Quit </br> ▬▬▬▬▬▬▬▬▬
                     </div>
                 </section>
-            </div>            
-            <!-- Footer -->
-            <footer id = "end" class = "end">
-                Built with love. <br>
-                Copyright: Ana Carolina Arellano, 2021           
-            </footer>
-            <!-- End of Footer-->
+            </div>
         </section>
         <!-- End of Win Screen -->
 
         <script type="module" src="scripts/index.js"></script>
     </body>
     <!-- End of body -->
+
+    <!-- Footer -->
+    <footer id = "end" class = "end">
+        Built with love. <br>
+        Copyright: Ana Carolina Arellano, 2021           
+    </footer>
+    </br></br>
     
 </html>
 <!-- Consulted sites -->
@@ -252,3 +174,8 @@
 <!-- https://www.w3schools.com/css/css_list.asp -->
 <!-- https://css-tricks.com/comparing-various-ways-to-hide-things-in-css/ -->
 <!-- https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ -->
+<!-- https://stackoverflow.com/questions/2604450/how-to-create-a-jquery-clock-timer -->
+<!-- Kirby images obtained from: https://i.pinimg.com/originals/c4/f6/4e/c4f64e7e2ced8dc664c6fef6d3ba5127.png
+    https://static.wikia.nocookie.net/kirby/images/6/64/Kirby-Festival-KSA.png/revision/latest/top-crop/width/360/height/450?cb=20180426175528
+    https://cdn2.scratch.mit.edu/get_image/user/32394957_60x60.png
+-->

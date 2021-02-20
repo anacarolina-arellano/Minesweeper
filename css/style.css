@@ -26,13 +26,13 @@ span{
     text-align: center;
     justify-content: center;
 }
-.pause{
+.my-button{
     border: 4px solid #664e62;
     margin-right: 20px;
     width: 20%;
     height: 2.5em;
 }
-.pause:hover{
+.my-button:hover{
     border: 6px solid #664e62;
     background-color: #ddbcf9;
     margin-right: 20px;
@@ -52,6 +52,7 @@ span{
     width: 20%;
     height: 2.5em;
 }
+/*
 .inst{
     margin: 0;
     border: 4px solid #664e62;
@@ -65,6 +66,7 @@ span{
     width: 20%;
     height: 2.5em;
 }
+*/
 .dif{
     margin: 0;
     text-align: center;
@@ -116,21 +118,17 @@ span{
     display: inline;
     flex-shrink: 0;
 }
-.kirby{
-    background: url(./kirby1.png) !important;
-    width: 3em; 
-    height: 3em;
-}
-.flag{
-    background: url(./flag.png) !important;
-    width: 3em; 
-    height: 3em;
-}
 .end{
     margin-top: 2em;
     margin-bottom: 2em;
 }
 .win-screen img{
+    height: 80%; 
+    margin: auto; 
+    display: block;
+    padding-bottom: 5em;
+}
+.lost-screen img{
     height: 80%; 
     margin: auto; 
     display: block;
@@ -145,7 +143,20 @@ span{
     text-align: center;
     font-size: 18px;
 }
+.lost-screen{
+    margin:auto;
+    border: 6px solid #664e62;
+    width: 60%;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    text-align: center;
+    font-size: 18px;
+}
 .win-screen span{
+    position: relative;
+    font-size: 30px;
+}
+.lost-screen span{
     position: relative;
     font-size: 30px;
 }
@@ -209,7 +220,7 @@ td{
     width: 2em;
     height: 2em;
     border: 1px solid white;
-    background-color: black;
+    background-color: #777777;
     margin: 1px;
     text-align: center;
     font-weight: bold;
@@ -233,4 +244,55 @@ footer{
     border-top: 3px solid lightgrey;
     border-right: 4px solid #555;
     border-bottom: 4px solid #555;
+}
+.run-game{
+    display: none ;
+}
+.hidden{
+    display: none ;
+}
+.revealed{
+    border: 4px solid light;
+    border-top: 3px solid gray;
+    border-left:3px solid gray;
+    background-color: silver;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.flag{
+    font-size: 0px;
+    background: url("../images/kirbyColors.jpeg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color-1{
+    color:cadetblue;
+}
+.color-2{
+    color:darkblue;
+}
+.color-3{
+    color:darkgreen
+}
+.color-4{
+    color:darkslateblue;
+}
+.easy{
+    width: 90% !important;
+    font-size: 0.9em;
+}
+.medium{
+    width: 90% !important;
+    font-size: 0.9em;
+}
+.hard{
+    width: 90% !important;
+    font-size: 0.9em;
+}
+.mine{
+    font-size: 0px;
+    background: url("../images/kirby1.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

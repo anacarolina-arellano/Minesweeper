@@ -3,12 +3,21 @@
 
 export default class Square{
     constructor(){
-        this._hasMine = false;
+        this.hasMine = false;
         this.adjacentMines = 0;
-        this.mine = null; // new Mine()
+        this.isFlagged = false;
+        this.isRevealed = false;
     }
 
-    get hasMine(){
-        return this._hasMine;
+    addAdjacent(){
+        this.adjacentMines++;
+    }
+
+    place() {
+        this.hasMine = true;
+    }
+
+    flag(){
+        this.isFlagged = !this.isFlagged;
     }
 }
