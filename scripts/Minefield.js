@@ -6,7 +6,7 @@ import Square from "./Square.js";
 
 export default class Minefield{
 
-    constructor(size = 12, mineCount= 20){
+    constructor(size, mineCount){
 
         this.size = size;
         this.field = []; // turn this into a 2D array of squares
