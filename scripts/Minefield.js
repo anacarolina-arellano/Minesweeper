@@ -3,7 +3,6 @@
 
 import Square from "./Square.js";
 
-
 export default class Minefield{
 
     constructor(size, mineCount){
@@ -11,7 +10,7 @@ export default class Minefield{
         this.size = size; //set size to size received as parameter
         this.field = []; // turn this into a 2D array of squares
         this.revealedSqs = 0; //count the number of revealed squares
-        this.mineCount = mineCount;
+        this.mineCount = mineCount; //number of mines to  be placed
         
         //initialize the minefield with empty squares
         this.init();
@@ -21,17 +20,17 @@ export default class Minefield{
         this.adjacentMines();
     }
 
+    //returns size of minefield
     get SIZE(){ return this.size };
+    //returns minecount of minefield
     get MINECOUNT(){ return this.mineCount };
 
     //Method seen in class
     init(){
         // create 2D array of squares 
         for(let i = 0; i < this.size; i++){
-
             this.field[i] =[];
             for(let j = 0 ; j < this.size; j++){
-                
                 this.field[i][j] = new Square();
             }
         }
