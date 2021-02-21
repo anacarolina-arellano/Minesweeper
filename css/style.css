@@ -264,7 +264,7 @@ footer{
     background-repeat: no-repeat;
 }
 .color-0{
-    opacity: 0.0;
+    color:rgba(0, 0, 0, 0.0);
 }
 .color-1{
     color:cadetblue;
