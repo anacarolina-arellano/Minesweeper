@@ -43,7 +43,7 @@ $(".easy").on(`click`, event => {
 //user click medium
 $(".medium").on(`click`, event => {
     clickAudio.play();
-    let game = new Game(12, 70, "my-class-med"); 
+    let game = new Game(9, 30, "my-class-med"); 
     game.run();         
     $(".splash-screen").hide();
     $(".run-game").show();
@@ -52,7 +52,7 @@ $(".medium").on(`click`, event => {
 //user clicks hard
 $(".hard").on(`click`, event =>{
     clickAudio.play();
-    let game = new Game(17, 100, "my-class-hard");
+    let game = new Game(12, 90, "my-class-hard");
     game.run();      
     $(".splash-screen").hide();
     $(".run-game").show();
