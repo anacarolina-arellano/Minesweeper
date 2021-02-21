@@ -33,6 +33,7 @@ import Minefield from "./Minefield.js"
 
         //Create minefield with received parameters
         this.minefield = new Minefield(size, mineCount);
+        this.minefield.revealedSqs = 0;
         //set game over to false
         this.gameOver = false;
         //0 flags at the beginning
@@ -56,14 +57,22 @@ import Minefield from "./Minefield.js"
             $(".lost-screen").hide();
             location.reload(); //Consulted page: https://www.w3schools.com/jsref/met_loc_reload.asp
         });
-
-        //when player clicks quit
+       
+      /*  //when player clicks play again
         $(".play-again").on(`click`, event => {
             clickAudio.play();
+            this.board.size = this.minefield.size;
+            const numMines = this.minefield.mineCount;
+            this.minefield = new Minefield(this.board.size, numMines);
+            this.gameOver = false;
+            this.flags  = 0;
+            this.generateBoard();
+            this.updateHandlers();
+            this.run();
             $(".run-game").show();
             $(".win-screen").hide();
             $(".lost-screen").hide();
-        });
+        });*/
 
         //when player clicks any square
         $(".square").on('click', event => {
@@ -71,6 +80,8 @@ import Minefield from "./Minefield.js"
             const $selectedEl = $(event.target);
             this.reveal($selectedEl);
         });
+
+        
 
         //when player right clicks
         $(".square").on('contextmenu', event => {
@@ -80,6 +91,9 @@ import Minefield from "./Minefield.js"
             const $selectedEl = $(event.target);
             this.flag($selectedEl); //Flag element
         })
+
+    }
+    updateMines(){
 
     }
       
@@ -143,6 +157,22 @@ import Minefield from "./Minefield.js"
             $(".instructions-screen").hide();
             $(".clock").removeClass("pauseClock");
         });
+
+        $(".play-again").on(`click`, event => {
+            clickAudio.play();
+            this.board.size = this.minefield.size;
+            const numMines = this.minefield.mineCount;
+            this.minefield = new Minefield(this.board.size, numMines);
+            this.gameOver = false;
+            this.flags  = 0;
+            this.generateBoard();
+            this.updateHandlers();
+            secondCount = 0;
+            $(".run-game").show();
+            $(".win-screen").hide();
+            $(".lost-screen").hide();
+            $(".clock").removeClass("pauseClock");
+        });
     }
 
     generateBoard(){
@@ -177,7 +207,6 @@ import Minefield from "./Minefield.js"
         const row = $element.data("row");
         const col = $element.data("col");
         this.flags++;
-        console.log(this.flags);
 
         //have the square as variable
         const sq = this.minefield.squareAt(row, col);
@@ -203,6 +232,7 @@ import Minefield from "./Minefield.js"
             this.gameOver = true; //game ends
             $(".run-game").hide();
             $(".win-screen").show();
+            $(".clock").addClass("pauseClock");
             backgroundAudio.pause();
         }
         //style revealed square
@@ -230,6 +260,7 @@ import Minefield from "./Minefield.js"
                 setTimeout(() => {  
                     $(".run-game").hide();
                     $(".lost-screen").show();
+                    $(".clock").addClass("pauseClock");
                     backgroundAudio.pause();
                     loseAudio.play();
                 }, 700);
