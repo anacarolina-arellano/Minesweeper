@@ -156,6 +156,12 @@ export default class Game{
 
         const sq = this.minefield.squareAt(row, col);
         sq.isRevealed = true;
+        this.minefield.revealedSqs++;
+        if(this.minefield.revealedSqs === (this.size - this.mineCount)){
+            this.gameOver = true;
+            $(".run-game").hide();
+            $(".win-screen").show();
+        }
         let styles = this.styleSquare(sq);
         $element.html(styles.inner).addClass(styles.classes);
     }

@@ -10,6 +10,7 @@ export default class Minefield{
 
         this.size = size;
         this.field = []; // turn this into a 2D array of squares
+        this.revealedSqs = 0; //count the number of revealed squares
         
         //initialize the minefield with empty squares
         this.init();
@@ -21,7 +22,7 @@ export default class Minefield{
 
     get SIZE(){ return this.size };
 
-
+    //Method seen in class
     init(){
         // create 2D array of squares 
         for(let i = 0; i < this.size; i++){
@@ -34,16 +35,19 @@ export default class Minefield{
         }
     }
 
+    //Method seen in class
     squareAt(row, col){
         //find square at row, col and return it
         return this.field[row][col];
     }
 
+    //Method seen in class
     randomizeMines(mineCount = 1){
         //for each mine, randomize row, col
         for(let i = 0; i < mineCount; i++){
             let theresMine = false;
             do{
+                //obtain random number for row and column
                 const row = Math.floor(Math.random() * this.size);
                 const col = Math.floor(Math.random() * this.size);
 
@@ -60,6 +64,7 @@ export default class Minefield{
         }
     }
 
+    //Method seen in class
     adjacentMines(row, col){
         // walk through field, for each square count adjacent
         for(let i = row - 1; i <= row + 1; i++){

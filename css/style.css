@@ -100,6 +100,7 @@ span{
 .nav{
     text-align: center;
     flex-direction: column;
+    position: fixed;
 }
 .middle{
     margin-top: 30px;
@@ -120,8 +121,7 @@ span{
 }
 .game-screen{
     position: relative;
-    margin-left: 20%;
-    margin-right: auto;
+    margin: 0 auto;
 }
 .while-playing-grid{
     margin-right: auto;
@@ -282,6 +282,9 @@ footer{
     background: url("../images/kirbyColors.jpeg");
     background-size: 100%;
     background-repeat: no-repeat;
+}
+.color-0{
+    font-size: 0px;
 }
 .color-1{
     color:cadetblue;
