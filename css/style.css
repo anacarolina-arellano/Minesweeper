@@ -264,7 +264,7 @@ footer{
     background-repeat: no-repeat;
 }
 .color-0{
-    font-size: 0px;
+    opacity: 0.0;
 }
 .color-1{
     color:cadetblue;
@@ -300,14 +300,14 @@ footer{
     z-index: 15;
 }
 .my-class-easy td{
-    width: 3.5em !important;
-    height: 3.5em !important;
-}
-.my-class-med td{
     width: 3.3em !important;
     height: 3.3em !important;
 }
-.my-class-hard td{
+.my-class-med td{
     width: 3em !important;
     height: 3em !important;
+}
+.my-class-hard td{
+    width: 2.7em !important;
+    height: 2.7em !important;
 }
