@@ -25,7 +25,7 @@ span{
     margin-right: auto; 
     margin-bottom: 0px; 
     display: block;
-    padding-bottom: 5em;
+    padding-bottom: 3em;
 }
 .splash-screen {
     height: 80%; 
@@ -128,13 +128,13 @@ span{
     height: 80%; 
     margin: auto; 
     display: block;
-    padding-bottom: 5em;
+    padding-bottom: 3em;
 }
 .lost-screen img{
     height: 80%; 
     margin: auto; 
     display: block;
-    padding-bottom: 5em;
+    padding-bottom: 2em;
 }
 .win-screen{
     margin:auto;
@@ -179,7 +179,7 @@ span{
     font-weight: bold;
 }
 .instructions-screen img{
-    height: 50%; 
+    width: 30%;
     margin: auto; 
     display: block;
     padding-bottom: 1em;
