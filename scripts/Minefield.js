@@ -8,9 +8,10 @@ export default class Minefield{
 
     constructor(size, mineCount){
 
-        this.size = size;
+        this.size = size; //set size to size received as parameter
         this.field = []; // turn this into a 2D array of squares
         this.revealedSqs = 0; //count the number of revealed squares
+        this.mineCount = mineCount;
         
         //initialize the minefield with empty squares
         this.init();
@@ -21,6 +22,7 @@ export default class Minefield{
     }
 
     get SIZE(){ return this.size };
+    get MINECOUNT(){ return this.mineCount };
 
     //Method seen in class
     init(){
