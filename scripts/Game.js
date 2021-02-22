@@ -281,6 +281,7 @@ import Minefield from "./Minefield.js"
             //manage screens
             $(".run-game").hide();
             $(".win-screen").show();
+            $(".lost-screen").hide();
             //clock stops running
             $(".clock").addClass("pauseClock");
             //music pauses
