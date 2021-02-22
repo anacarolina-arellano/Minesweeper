@@ -60,6 +60,8 @@ import Minefield from "./Minefield.js"
 
         //when player clicks any square
         $(".square").on('click', event => {
+            if(this.gameOver) return;
+            
             clickAudio.play();
             const $selectedEl = $(event.currentTarget);
             //obtain row and col of square
@@ -106,6 +108,8 @@ import Minefield from "./Minefield.js"
         // clock pauses, the paused-screen is shown and the
         // run-game screen is hidden
         $(".on-pause").on(`click`, event => {
+            if(this.gameOver) return;
+
             clickAudio.play();
             $(".paused").show();
             $(".run-game").hide();
@@ -155,6 +159,7 @@ import Minefield from "./Minefield.js"
             this.flags  = 0;
             this.generateBoard();
             this.updateHandlers();
+
             //restart timer
             secondCount = 0;
             //screens management
@@ -162,6 +167,7 @@ import Minefield from "./Minefield.js"
             $(".win-screen").hide();
             $(".lost-screen").hide();
             $(".clock").removeClass("pauseClock");
+            this.run();
         });
     }
 
@@ -286,6 +292,7 @@ import Minefield from "./Minefield.js"
             //if square has a mine -> game over
             if(aSquare.hasMine){
                 this.gameOver = true;
+
                 setTimeout(() => {  
                     //manage screens
                     $(".run-game").hide();
@@ -295,7 +302,7 @@ import Minefield from "./Minefield.js"
                     backgroundAudio.pause();
                     loseAudio.play();
                     //0.7 seconds until lose-screen appears
-                }, 700);
+                }, 7000);
             }
         }
         return {
