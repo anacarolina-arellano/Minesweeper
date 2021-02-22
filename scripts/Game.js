@@ -23,9 +23,12 @@ import Minefield from "./Minefield.js"
 
     //Music played when user loses
     var loseAudio = new buzz.sound('../sounds/mixkit-completion-of-a-level-2063', config);
+
+    //Music played when user wins
+    var winAudio = new buzz.sound('../sounds/mixkit-video-game-win-2016', config);
     export default class Game{
 
-    constructor(size , mineCount, myClass){
+    constructor(size , mineCount, myClass, numFlags){
         //Create a game
         this.board = {
             size : size,
@@ -41,6 +44,8 @@ import Minefield from "./Minefield.js"
         this.flags = 0;
         //size of td based on received class
         this.difClass = myClass;
+        //number of flags that can be placed
+        this.availableFlags = numFlags;
 
         //function calls
         this.generateBoard();
@@ -102,6 +107,8 @@ import Minefield from "./Minefield.js"
     //start of game and clock
     run(){
         backgroundAudio.play();
+        //print initial number of flags
+        $(".numFlags").html("Flags: " + (this.availableFlags));
         //management of time
         let secondCount = 0;
         window.setInterval(() => {
@@ -263,7 +270,8 @@ import Minefield from "./Minefield.js"
             //show the square in grey again
             $element.removeClass("flag");
         }
-        
+        //print number of available flags after flag event
+        $(".numFlags").html("Flags: " + (this.availableFlags-this.flags));
     }
 
     //A square is clicked
@@ -286,6 +294,8 @@ import Minefield from "./Minefield.js"
             $(".clock").addClass("pauseClock");
             //music pauses
             backgroundAudio.pause();
+            //winAudio sounds
+            winAudio.play();
         }
         //style revealed square
         let styles = this.styleSquare(sq);

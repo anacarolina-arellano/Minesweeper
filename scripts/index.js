@@ -16,7 +16,7 @@ var clickAudio = new buzz.sound('../sounds/mixkit-video-game-retro-click-237', {
 //Application starts at level "easy" if no
 //difficulty is chosen
 $(".play").on(`click`, event => {
-    let game = new Game(7, 5, "my-class-easy"); 
+    let game = new Game(7, 5, "my-class-easy", 5); 
     game.run();
     $(".splash-screen").hide();
     $(".run-game").show();
@@ -34,7 +34,7 @@ $(".dif").on(`mouseenter`, event => {
 //user clicks easy
 $(".easy").on(`click`, event => {
     clickAudio.play();
-    let game = new Game(7, 5, "my-class-easy");
+    let game = new Game(7, 5, "my-class-easy", 5);
     game.run();
     $(".splash-screen").hide();
     $(".run-game").show();
@@ -43,7 +43,7 @@ $(".easy").on(`click`, event => {
 //user click medium
 $(".medium").on(`click`, event => {
     clickAudio.play();
-    let game = new Game(9, 15, "my-class-med"); 
+    let game = new Game(9, 15, "my-class-med", 15); 
     game.run();         
     $(".splash-screen").hide();
     $(".run-game").show();
@@ -52,7 +52,7 @@ $(".medium").on(`click`, event => {
 //user clicks hard
 $(".hard").on(`click`, event =>{
     clickAudio.play();
-    let game = new Game(12, 25, "my-class-hard");
+    let game = new Game(12, 25, "my-class-hard", 25);
     game.run();      
     $(".splash-screen").hide();
     $(".run-game").show();
