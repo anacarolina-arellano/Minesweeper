@@ -46,7 +46,7 @@ import Minefield from "./Minefield.js"
         this.updateHandlers();
     }
 
-    //handless clicks in the different buttons of the game
+    //handles clicks in the different buttons of the game
     updateHandlers(){
 
         //when player clicks quit
@@ -61,8 +61,14 @@ import Minefield from "./Minefield.js"
         //when player clicks any square
         $(".square").on('click', event => {
             clickAudio.play();
-            const $selectedEl = $(event.target);
-            this.reveal($selectedEl);
+            const $selectedEl = $(event.currentTarget);
+            //obtain row and col of square
+            const row = $selectedEl.data("row");
+            const col = $selectedEl.data("col");
+
+            const sq = this.minefield.squareAt(row,col)
+
+            this.reveal(sq, row, col);
         });
 
         //when player right clicks
@@ -172,7 +178,7 @@ import Minefield from "./Minefield.js"
            markup += `<tr class = "${this.difClass}">`;
            for(let col = 0; col < this.board.size; col++){
                //set id with current row and col
-               const id = `square - ${row} - ${col}`;
+               const id = `square-${row}-${col}`;
                //obtain the current square from the minefield
                const mySquare = this.minefield.squareAt(row, col);
                
@@ -206,13 +212,7 @@ import Minefield from "./Minefield.js"
     }
 
     //A square is clicked
-    reveal($element){
-        //obtain row and col of square
-        const row = $element.data("row");
-        const col = $element.data("col");
-
-        //have the square as variable
-        const sq = this.minefield.squareAt(row, col);
+    reveal(sq, row, col){
         //the square is revealed
         sq.isRevealed = true;
         //increase num of revealed squares
@@ -227,8 +227,41 @@ import Minefield from "./Minefield.js"
         }
         //style revealed square
         let styles = this.styleSquare(sq);
-        //add to html 
+        //get element and add classes to html
+        const $element = $(`#square-${row}-${col}`);
         $element.html(styles.inner).addClass(styles.classes);
+
+        if(sq.adjacentMines != 0){
+            return;
+        }
+
+        // top
+        if(row-1 >= 0){
+            this.revealZeros(row-1, col);
+        }
+
+        // bottom
+        if(row+1 < this.board.size){
+            this.revealZeros(row+1, col);
+        }
+
+        // left
+        if(col-1 >= 0){
+            this.revealZeros(row, col-1);
+        }
+
+        // right
+        if(col+1 < this.board.size){
+            this.revealZeros(row, col+1);
+        }
+
+    }
+
+    revealZeros(row, col){
+        const sq = this.minefield.squareAt(row, col);
+        if(!sq.hasMine &&!sq.isRevealed){
+            this.reveal(sq, row, col);
+        }
     }
 
     //Logic seen in class
