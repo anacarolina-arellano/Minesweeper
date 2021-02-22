@@ -33,6 +33,7 @@ import Minefield from "./Minefield.js"
 
         //Create minefield with received parameters
         this.minefield = new Minefield(size, mineCount);
+        //minefield has 0 revealed squares at the beginning
         this.minefield.revealedSqs = 0;
         //set game over to false
         this.gameOver = false;
@@ -51,7 +52,9 @@ import Minefield from "./Minefield.js"
 
         //when player clicks quit
         $(".quit").on(`click`, event => {
+            //play click sound
             clickAudio.play();
+            //screen management
             $(".splash-screen").show();
             $(".instructions-screen").hide();
             $(".lost-screen").hide();
@@ -60,26 +63,38 @@ import Minefield from "./Minefield.js"
 
         //when player clicks any square
         $(".square").on('click', event => {
+            //bloclkclicking if game is over
             if(this.gameOver) return;
             
+            //play music
             clickAudio.play();
+            //get clicked element with jquery
             const $selectedEl = $(event.currentTarget);
             //obtain row and col of square
             const row = $selectedEl.data("row");
             const col = $selectedEl.data("col");
 
+            //get square by calling squareAt
             const sq = this.minefield.squareAt(row,col)
 
+            //You can't click more times a square that has
+            // already  been revealed
+            if(sq.isRevealed) return;
+
+            //reveal the clicked square and send its row and col
             this.reveal(sq, row, col);
         });
 
         //when player right clicks
         $(".square").on('contextmenu', event => {
+            //play audio
             clickAudio.play();
             event.preventDefault();
 
+            //get jquery element
             const $selectedEl = $(event.target);
-            this.flag($selectedEl); //Flag element
+            //flag element
+            this.flag($selectedEl); 
         })
     }
 
@@ -108,11 +123,15 @@ import Minefield from "./Minefield.js"
         // clock pauses, the paused-screen is shown and the
         // run-game screen is hidden
         $(".on-pause").on(`click`, event => {
+            //block clicking pause if game is over
             if(this.gameOver) return;
 
+            //play audio
             clickAudio.play();
+            //manage screens
             $(".paused").show();
             $(".run-game").hide();
+            //pause clock
             $(".clock").addClass("pauseClock");
         });
 
@@ -120,9 +139,12 @@ import Minefield from "./Minefield.js"
         // clock runs again, the paused-screen is hidden and the
         // run-game screen is shown
         $(".resume").on(`click`, event => {
+            //play audio
             clickAudio.play();
+            //manage screens
             $(".run-game").show();
             $(".paused").hide();
+            //resume clock
             $(".clock").removeClass("pauseClock");
         });
 
@@ -130,10 +152,16 @@ import Minefield from "./Minefield.js"
         // clock pauses, the instructions-screen is shown and the
         // run-game screen is hidden
         $(".inst").on(`click`, event => {
+            //block clicking on instructions if game is over
+            if(this.gameOver) return;
+
+            //play audio
             clickAudio.play();
+            //manage screens
             $(".instructions-screen").show();
             $(".paused").hide();
             $(".run-game").hide();
+            //pause clock
             $(".clock").addClass("pauseClock");
         });
 
@@ -141,14 +169,18 @@ import Minefield from "./Minefield.js"
         // clock runs again, the instructions-screen is hidden and the
         // run-game screen is shown
         $(".back").on(`click`, event => {
+            //play audio
             clickAudio.play();
+            //manage screens
             $(".run-game").show();
             $(".instructions-screen").hide();
+            //resume clock
             $(".clock").removeClass("pauseClock");
         });
 
         //player clicks "play again"
         $(".play-again").on(`click`, event => {
+            //play audio
             clickAudio.play();
             //manually restart all variables
             this.board.size = this.minefield.size;
@@ -157,6 +189,7 @@ import Minefield from "./Minefield.js"
             this.minefield = new Minefield(this.board.size, numMines); 
             this.gameOver = false;
             this.flags  = 0;
+            //function calls
             this.generateBoard();
             this.updateHandlers();
 
@@ -166,6 +199,7 @@ import Minefield from "./Minefield.js"
             $(".run-game").show();
             $(".win-screen").hide();
             $(".lost-screen").hide();
+            //clock runs again
             $(".clock").removeClass("pauseClock");
             this.run();
         });
@@ -208,27 +242,48 @@ import Minefield from "./Minefield.js"
         //obtain row and col of square
         const row = $element.data("row");
         const col = $element.data("col");
-        this.flags++;
 
         //have the square as variable
         const sq = this.minefield.squareAt(row, col);
-        sq.isFlagged = true; //set its attribute "isFlagged" to true
-        let styles = this.styleSquare($element); //style the square (add background image)
-        $element.html(styles.inner).addClass(styles.classes); //put result into html document
+        if(!sq.isFlagged){
+            //set its attribute "isFlagged" to true
+            sq.isFlagged = true; 
+            this.flags++;
+            //style the square (add background image)
+            this.reveal(sq, row, col);  
+            //put result into html document
+            let styles = this.styleSquare(sq);
+            $element.html(styles.inner).addClass(styles.classes); 
+        }
+        else{
+            //set its attribute "isFlagged" to false
+            sq.isFlagged = false; 
+            //subtract 1 to number of flags
+            this.flags--; 
+            //show the square in grey again
+            $element.removeClass("flag");
+        }
+        
     }
 
     //A square is clicked
     reveal(sq, row, col){
-        //the square is revealed
-        sq.isRevealed = true;
+        //the square is maked as revealed if it is not flagged
+        if(!sq.isFlagged){
+            sq.isRevealed = true;
+        }
         //increase num of revealed squares
         this.minefield.revealedSqs++;
-        //player wins if the only squares that are left unrevealed(or flagged) have mines
-        if((this.minefield.revealedSqs + this.flags)  >= (this.minefield.SIZE * this.minefield.SIZE)  - this.minefield.MINECOUNT){
-            this.gameOver = true; //game ends
+        //player wins if the only squares that are left unrevealed have mines
+        if(this.minefield.revealedSqs  >= (this.minefield.SIZE * this.minefield.SIZE)  - this.minefield.MINECOUNT){
+            //game ends
+            this.gameOver = true; 
+            //manage screens
             $(".run-game").hide();
             $(".win-screen").show();
+            //clock stops running
             $(".clock").addClass("pauseClock");
+            //music pauses
             backgroundAudio.pause();
         }
         //style revealed square
@@ -237,33 +292,44 @@ import Minefield from "./Minefield.js"
         const $element = $(`#square-${row}-${col}`);
         $element.html(styles.inner).addClass(styles.classes);
 
-        if(sq.adjacentMines != 0){
+        //if current square has one or more adjacent mines, 
+        //stop calling revealZeros function or if square is
+        //flag don't reveal adjacent squares
+        if(sq.adjacentMines > 0 || sq.isFlagged){
             return;
         }
 
-        // top
+        //if it has adjacent mines
+        // check adjacent square on top
         if(row-1 >= 0){
+            //function call if row is no exceeding bounds of board
             this.revealZeros(row-1, col);
         }
 
-        // bottom
+        // check adjacent square at the bottom
         if(row+1 < this.board.size){
+            //function call if row is no exceeding bounds of board
             this.revealZeros(row+1, col);
         }
 
-        // left
+        //check adjacent square at the left
         if(col-1 >= 0){
+            //function call if row is no exceeding bounds of board
             this.revealZeros(row, col-1);
         }
 
-        // right
+        // check adjacent square at the right
         if(col+1 < this.board.size){
+            //function call if row is no exceeding bounds of board
             this.revealZeros(row, col+1);
         }
 
     }
 
+    //Method that reveals the squares that do not have mines
+    // and haven't been revealed yet
     revealZeros(row, col){
+        //get square element from  minefield with received row and col
         const sq = this.minefield.squareAt(row, col);
         if(!sq.hasMine &&!sq.isRevealed){
             this.reveal(sq, row, col);
@@ -297,12 +363,13 @@ import Minefield from "./Minefield.js"
                     //manage screens
                     $(".run-game").hide();
                     $(".lost-screen").show();
+                    //pause clock
                     $(".clock").addClass("pauseClock");
                     //quit game music and play lose music
                     backgroundAudio.pause();
                     loseAudio.play();
                     //0.7 seconds until lose-screen appears
-                }, 7000);
+                }, 700);
             }
         }
         return {
